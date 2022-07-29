@@ -1,0 +1,22 @@
+$choices-border-radius: 50px;
+$choices-bg-color: #fec;
+$choices-bg-color-dropdown: #fec;
+
+$choices-text-color: #3e3b3b;
+$choices-keyline-color: #ffbe2e;
+
+@import "~choices.js/src/styles/choices.scss";
+
+.#{$choices-selector} {
+	&__list--single {
+		padding: 30px;
+	}
+
+	&__list--dropdown &__item {
+		border-bottom: 1px solid #ffbe2e;
+	}
+	&__list--dropdown &__item--selectable.is-highlighted,
+	&__list[aria-expanded] &__item--selectable.is-highlighted {
+		background-color: rgba(252, 228, 180, 0.507);
+	}
+}

@@ -1,0 +1,20 @@
+.header {
+	background: #ffbe2e;
+	padding-top: 33px;
+	&__inner {
+		padding-top: 15px;
+	}
+	&__content {
+		display: flex;
+		margin-bottom: 20px;
+	}
+	&__content-img {
+		margin-left: 77px;
+		margin-right: 125px;
+	}
+	&__content-title {
+		font-weight: 900;
+		font-size: 55px;
+		line-height: 67px;
+	}
+}
