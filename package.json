@@ -4,8 +4,10 @@
 	"description": "",
 	"source": "index.html",
 	"scripts": {
-		"build": "parcel build",
-		"start": "parcel"
+		"build": "parcel build --no-optimize --public-url ./",
+		"start": "parcel",
+		"deploy": "gh-pages -d dist",
+		"predeploy": "npm run build"
 	},
 	"author": "",
 	"license": "ISC",
@@ -15,6 +17,7 @@
 	},
 	"devDependencies": {
 		"@parcel/transformer-sass": "^2.6.2",
+		"gh-pages": "^4.0.0",
 		"parcel": "^2.6.2"
 	}
 }
