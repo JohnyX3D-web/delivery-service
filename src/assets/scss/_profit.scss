@@ -1,0 +1,72 @@
+.profit {
+	padding-top: 83px;
+	padding-bottom: 50px;
+	&__title {
+		max-width: 570px;
+		margin: 0 auto;
+	}
+	&__list {
+		display: flex;
+		justify-content: center;
+		margin-top: 62px;
+		margin-bottom: 100px;
+	}
+	&__item {
+		width: 460px;
+		box-shadow: 0px 2px 13px rgba(255, 190, 46, 0.2);
+		border-radius: 48px;
+		padding: 30px 30px;
+		&:not(:last-child) {
+			margin-right: 30px;
+		}
+	}
+	&__item-content {
+		margin-top: 10px;
+	}
+	&__item-title {
+		padding-left: 10px;
+		font-weight: 700;
+		font-size: 35px;
+		line-height: 111.9%;
+		margin-bottom: 10px;
+	}
+	&__item-text {
+		padding-left: 15px;
+		font-size: 20px;
+		line-height: 24px;
+		width: 361px;
+	}
+	&__box {
+		background-color: #fff8e9;
+		border-radius: 48px;
+		display: flex;
+		padding: 26px 162px 46px;
+	}
+	&__box-title {
+		padding-top: 44px;
+		padding-bottom: 26px;
+		text-align: left;
+	}
+	&__box-list {
+	}
+	&__box-item {
+		font-weight: 800;
+		font-size: 25px;
+		line-height: 30px;
+		padding-left: 25px;
+		position: relative;
+		&:not(:last-child) {
+			margin-bottom: 11px;
+		}
+		&::before {
+			content: "";
+			position: absolute;
+			top: 12px;
+			left: 0;
+			width: 10px;
+			height: 10px;
+			background-color: #ffbe2e;
+			border-radius: 100%;
+		}
+	}
+}

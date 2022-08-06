@@ -25,7 +25,23 @@ a {
 	&--secondary {
 		background-color: #ffffff;
 	}
+	&--md {
+		padding: 16px 69px;
+	}
 	&--lg {
-		padding: 0 0 0 0;
+		padding: 37px 50px;
+		font-size: 30px;
+	}
+	&--block {
+		width: 100%;
+		display: block;
+	}
+}
+.title {
+	font-weight: 800;
+	font-size: 45px;
+	text-align: center;
+	& span {
+		color: #ffbe2e;
 	}
 }

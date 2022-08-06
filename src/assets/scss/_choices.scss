@@ -5,18 +5,49 @@ $choices-bg-color-dropdown: #fec;
 $choices-text-color: #3e3b3b;
 $choices-keyline-color: #ffbe2e;
 
+$choices-font-size-md: 18px;
+
 @import "~choices.js/src/styles/choices.scss";
 
 .#{$choices-selector} {
+	&__inner {
+		padding: 0 0px;
+		font-weight: 300;
+		line-height: 22px;
+	}
+	&__item {
+	}
 	&__list--single {
 		padding: 30px;
 	}
 
 	&__list--dropdown &__item {
 		border-bottom: 1px solid #ffbe2e;
+		padding-left: 20px;
 	}
 	&__list--dropdown &__item--selectable.is-highlighted,
 	&__list[aria-expanded] &__item--selectable.is-highlighted {
 		background-color: rgba(252, 228, 180, 0.507);
+	}
+	&[data-type*="select-one"] &__inner {
+		padding-bottom: 0px;
+	}
+	&__list--dropdown &__item,
+	&__list[aria-expanded] &__item {
+		padding: 10px 10px 10px 30px;
+	}
+	&[data-type*="select-one"] {
+		&::after {
+			border-style: solid;
+			border-width: 20px 13.5px 0 13.5px;
+			border-color: #3e3b3b transparent transparent transparent;
+			top: calc(50% - 7px);
+			right: 30px;
+		}
+		&.is-open {
+			&::after {
+				transform: rotate(135deg);
+			}
+		}
 	}
 }
