@@ -1,9 +1,11 @@
 // import Choices from "choices.js";
 // //import "choices.js/public/assets/styles/choices.min.css";
+// const form = document.querySelector("#international-delivery-form");
+// const selectFrom = form.querySelector(`[name="from"]`);
+// const selectTo = form.querySelector(`[name="to"]`);
 
-// const select = document.querySelector(".select__item");
-
-// const choices = new Choices(select);
+// const selectFromObj = new Choices(selectFrom);
+// const selectToObj = new Choices(selectTo);
 
 // fetch("http://localhost:3000/countries")
 // 	.then((response) => response.json())
@@ -15,5 +17,6 @@
 // 			};
 // 		});
 
-// 		choices.setChoices(countries);
+// 		selectFromObj.setChoices(countries);
+// 		selectToObj.setChoices(countries);
 // 	});

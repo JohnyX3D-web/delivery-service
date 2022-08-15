@@ -90,114 +90,102 @@
 							Експрес доставка листів і посилок
 						</h1>
 					</div>
+
 					<div class="tabs">
 						<div class="tabs__buttons">
-							<button class="tabs__btn">Міжнародна доставка</button>
+							<button class="tabs__btn tabs__btn--active">
+								Міжнародна доставка
+							</button>
 							<button class="tabs__btn tabs__btn--disable">
 								Доставка по Україні
 							</button>
 						</div>
 						<div class="tabs__wrapper">
-							<div class="tabs__content">
-								<div class="select">
-									<label class="select__title">Звідки</label>
-									<select class="select__item">
-										<option selected>Виберіть країну</option>
-									</select>
-								</div>
-								<div class="select">
-									<label class="select__title">Куди</label>
-									<select class="select__item"></select>
-								</div>
-								<div class="select">
-									<span class="select__title">Тип відправлення</span>
-									<button class="select__btn select__btn--with-border">
-										Виберіть тип відправлення
-									</button>
-								</div>
-								<div class="select__inner">
-									<div class="select__box">
-										<button class="select__box-btn">
-											<img
-												src="./src/assets/img/header/slect-img-1.svg"
-												alt="select img"
-												class="select__box-img"
-											/>
-											<div>
-												<p class="select__box-title">Конверт</p>
-												<span class="select__box-text">0.3 кг</span>
-											</div>
+							<form id="international-delivery-form" class="tabs__content">
+								<div class="select-wrapper">
+									<div class="select">
+										<label class="select__title">Звідки</label>
+										<select class="select__item" name="from">
+											<option selected>Виберіть країну</option>
+										</select>
+									</div>
+									<div class="select">
+										<label class="select__title">Куди</label>
+										<select class="select__item" name="to">
+											<option selected>Виберіть країну</option>
+										</select>
+									</div>
+									<div class="select">
+										<select name="sendingType">
+											<option value="envelope-small">envelope-small</option>
+											<option value="envelope-big">envelope-big</option>
+										</select>
+										<span class="select__title">Тип відправлення</span>
+										<button
+											type="button"
+											class="select__btn select__btn--with-border"
+										>
+											Виберіть тип відправлення
 										</button>
-										<button class="select__box-btn">
-											<img
-												src="./src/assets/img/header/slect-img-2.svg"
-												alt="select img"
-												class="select__box-img"
-											/>
-											<div>
-												<p class="select__box-title">Конверт</p>
-												<span class="select__box-text">0.5 кг</span>
+										<div class="select__inner">
+											<div class="select__box">
+												<button
+													value="envelope-small"
+													type="button"
+													class="select__box-btn"
+												>
+													<div class="select__box-wrap">
+														<img
+															src="./src/assets/img/header/slect-img-1.svg"
+															alt="select img"
+															class="select__box-img"
+														/>
+														<div>
+															<p class="select__box-title">Конверт</p>
+															<span class="select__box-text">0.3 кг</span>
+														</div>
+													</div>
+												</button>
+												<button
+													value="envelope-big"
+													type="button"
+													class="select__box-btn"
+												>
+													<div class="select__box-wrap">
+														<img
+															src="./src/assets/img/header/slect-img-2.svg"
+															alt="select img"
+															class="select__box-img"
+														/>
+														<div>
+															<p class="select__box-title">Конверт</p>
+															<span class="select__box-text">0.5 кг</span>
+														</div>
+													</div>
+												</button>
+												<button
+													value="parcel"
+													type="button"
+													class="select__box-btn"
+												>
+													<div class="select__box-wrap">
+														<img
+															src="./src/assets/img/header/slect-img-3.svg"
+															alt="select img"
+															class="select__box-img"
+														/>
+														<div>
+															<p class="select__box-title">Посилка</p>
+														</div>
+													</div>
+												</button>
 											</div>
-										</button>
-										<button class="select__box-btn">
-											<img
-												src="./src/assets/img/header/slect-img-3.svg"
-												alt="select img"
-												class="select__box-img"
-											/>
-											<div>
-												<p class="select__box-title">Посилка</p>
-											</div>
-										</button>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="tabs__options tabs__options--open">
-								<div class="quantity">
-									<label>Довжина</label>
-									<input
-										value="0"
-										min="0"
-										step="1"
-										type="number"
-										class="quantity__input"
-									/>
-								</div>
-								<div class="quantity">
-									<label>Ширина</label>
-									<input
-										value="0"
-										min="0"
-										step="1"
-										type="number"
-										class="quantity__input"
-									/>
-								</div>
-								<div class="quantity">
-									<label>Висота</label>
-									<input
-										value="0"
-										min="0"
-										step="1"
-										type="number"
-										class="quantity__input"
-									/>
-								</div>
-								<div class="quantity">
-									<label>Вага</label>
-									<input
-										value="0"
-										min="0"
-										step="1"
-										type="number"
-										class="quantity__input"
-									/>
-								</div>
-							</div>
-							<div class="computation computation--open">
-								<div class="computation__menu">
+								<div class="tabs__options tabs__options--open">
 									<div class="quantity">
-										<label>К-ть</label>
+										<label>Довжина</label>
 										<input
 											value="0"
 											min="0"
@@ -206,86 +194,141 @@
 											class="quantity__input"
 										/>
 									</div>
-									<button class="computation__btn">
-										<span class="computation__add-icon"></span>
-										Додати відправлення
-									</button>
-									<button class="btn btn--lg btn--block">Розрахувати</button>
+									<div class="quantity">
+										<label>Ширина</label>
+										<input
+											value="0"
+											min="0"
+											step="1"
+											type="number"
+											class="quantity__input"
+										/>
+									</div>
+									<div class="quantity">
+										<label>Висота</label>
+										<input
+											value="0"
+											min="0"
+											step="1"
+											type="number"
+											class="quantity__input"
+										/>
+									</div>
+									<div class="quantity">
+										<label>Вага</label>
+										<input
+											value="0"
+											min="0"
+											step="1"
+											type="number"
+											class="quantity__input"
+										/>
+									</div>
 								</div>
-								<div class="computation__inner">
-									<div class="computation__discont">
-										<p class="computation__discont-text">
-											Багато відправляєш? Хочеш знижку? Тисни сюди
-										</p>
-										<button class="computation__discont-btn">
-											<img src="./src/assets/img/header/discont.svg" alt="" />
+								<div class="computation computation--open">
+									<div class="computation__menu">
+										<div class="quantity">
+											<label>К-ть</label>
+											<input
+												value="0"
+												min="0"
+												step="1"
+												type="number"
+												class="quantity__input"
+											/>
+										</div>
+										<button class="computation__btn">
+											<span class="computation__add-icon"></span>
+											Додати відправлення
 										</button>
+										<button class="btn btn--lg btn--block">Розрахувати</button>
 									</div>
-									<p class="computation__text">
-										Пропонуємо ознайомитися з
-										<span>митним оформленням посилок</span>
-									</p>
-									<div class="computation__choice">
-										<div class="computation__choice-item">
-											<div class="computation__choice-title">
-												<p>Швидка доставка за 2-3 дні, через компанію</p>
-												<img src="./src/assets/img/header/choice.png" alt="" />
-											</div>
-											<div class="computation__choice-price">
-												<span class="computation__choice-text"> 1000 грн </span>
-												<button class="btn btn--md">Замовити</button>
-											</div>
+									<div class="computation__inner">
+										<div class="computation__discont">
+											<p class="computation__discont-text">
+												Багато відправляєш? Хочеш знижку? Тисни сюди
+											</p>
+											<button class="computation__discont-btn">
+												<img src="./src/assets/img/header/discont.svg" alt="" />
+											</button>
 										</div>
-										<div
-											class="computation__choice-item computation__choice-item--border"
-										>
-											<div
-												class="computation__choice-title computation__choice-title--secondary"
-											>
-												<p>Звичайна доставка за 4-5 днів, через компанію</p>
-												<img src="./src/assets/img/header/choice.png" alt="" />
-											</div>
-											<div class="computation__choice-price">
-												<span class="computation__choice-text"> 400 грн </span>
-												<button class="btn btn--md">Замовити</button>
-											</div>
-										</div>
-									</div>
-									<div class="computation__content">
-										<p class="computation__content-title">
-											Корисна iнформацiя стосовно митних платежiв для отримання
-											посилок:
+										<p class="computation__text">
+											Пропонуємо ознайомитися з
+											<span>митним оформленням посилок</span>
 										</p>
-										<div class="computation__content-box">
-											<ul>
-												<li class="computation__content-subtitle">
-													Поріг безмитного ввезення:
-												</li>
-												<li class="computation__content-subtitle">
-													Податок при перевищенні порогу:
-												</li>
-												<li class="computation__content-subtitle">
-													Митний податок:
-												</li>
-												<li class="computation__content-subtitle">
-													Iнформацiя:
-												</li>
-											</ul>
-											<ul>
-												<li class="computation__content-text">
-													до 1000AUD (≈738.6USD)
-												</li>
-												<li class="computation__content-text">10%</li>
-												<li class="computation__content-text">От 0 до 10%</li>
-												<li class="computation__content-text">
-													Деякi товари не пiдлягають обкладенню митними зборами
-													(наприклад ноутбуки та iншi електроннi вироби).
-												</li>
-											</ul>
+										<div class="computation__choice">
+											<div class="computation__choice-item">
+												<div class="computation__choice-title">
+													<p>Швидка доставка за 2-3 дні, через компанію</p>
+													<img
+														src="./src/assets/img/header/choice.png"
+														alt=""
+													/>
+												</div>
+												<div class="computation__choice-price">
+													<span class="computation__choice-text">
+														1000 грн
+													</span>
+													<button class="btn btn--md">Замовити</button>
+												</div>
+											</div>
+											<div
+												class="computation__choice-item computation__choice-item--border"
+											>
+												<div
+													class="computation__choice-title computation__choice-title--secondary"
+												>
+													<p>Звичайна доставка за 4-5 днів, через компанію</p>
+													<img
+														src="./src/assets/img/header/choice.png"
+														alt=""
+													/>
+												</div>
+												<div class="computation__choice-price">
+													<span class="computation__choice-text">
+														400 грн
+													</span>
+													<button class="btn btn--md">Замовити</button>
+												</div>
+											</div>
+										</div>
+										<div class="computation__content">
+											<p class="computation__content-title">
+												Корисна iнформацiя стосовно митних платежiв для
+												отримання посилок:
+											</p>
+											<div class="computation__content-box">
+												<ul>
+													<li class="computation__content-subtitle">
+														Поріг безмитного ввезення:
+													</li>
+													<li class="computation__content-subtitle">
+														Податок при перевищенні порогу:
+													</li>
+													<li class="computation__content-subtitle">
+														Митний податок:
+													</li>
+													<li class="computation__content-subtitle">
+														Iнформацiя:
+													</li>
+												</ul>
+												<ul>
+													<li class="computation__content-text">
+														до 1000AUD (≈738.6USD)
+													</li>
+													<li class="computation__content-text">10%</li>
+													<li class="computation__content-text">От 0 до 10%</li>
+													<li class="computation__content-text">
+														Деякi товари не пiдлягають обкладенню митними
+														зборами (наприклад ноутбуки та iншi електроннi
+														вироби).
+													</li>
+												</ul>
+											</div>
 										</div>
 									</div>
 								</div>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
