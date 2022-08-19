@@ -106,19 +106,21 @@
 									<div class="select">
 										<label class="select__title">Звідки</label>
 										<select class="select__item" name="from">
-											<option selected>Виберіть країну</option>
+											<option value="" selected>Виберіть країну</option>
 										</select>
 									</div>
 									<div class="select">
 										<label class="select__title">Куди</label>
 										<select class="select__item" name="to">
-											<option selected>Виберіть країну</option>
+											<option value="" selected>Виберіть країну</option>
 										</select>
 									</div>
 									<div class="select">
-										<select name="sendingType">
+										<select hidden name="sendingType">
+											<option value=""></option>
 											<option value="envelope-small">envelope-small</option>
 											<option value="envelope-big">envelope-big</option>
+											<option value="parcel">parcel</option>
 										</select>
 										<span class="select__title">Тип відправлення</span>
 										<button
@@ -183,59 +185,82 @@
 										</div>
 									</div>
 								</div>
-								<div class="tabs__options tabs__options--open">
-									<div class="quantity">
-										<label>Довжина</label>
-										<input
-											value="0"
-											min="0"
-											step="1"
-											type="number"
-											class="quantity__input"
-										/>
-									</div>
-									<div class="quantity">
-										<label>Ширина</label>
-										<input
-											value="0"
-											min="0"
-											step="1"
-											type="number"
-											class="quantity__input"
-										/>
-									</div>
-									<div class="quantity">
-										<label>Висота</label>
-										<input
-											value="0"
-											min="0"
-											step="1"
-											type="number"
-											class="quantity__input"
-										/>
-									</div>
-									<div class="quantity">
-										<label>Вага</label>
-										<input
-											value="0"
-											min="0"
-											step="1"
-											type="number"
-											class="quantity__input"
-										/>
-									</div>
-								</div>
-								<div class="computation computation--open">
-									<div class="computation__menu">
-										<div class="quantity">
-											<label>К-ть</label>
+								<div class="tabs__options">
+									<div class="input">
+										<label class="input__label">Довжина</label>
+										<div class="input__wrap">
+											<span class="input__prefix">cm</span>
 											<input
+												data-suffix="sm"
 												value="0"
 												min="0"
 												step="1"
 												type="number"
-												class="quantity__input"
+												class="input__element input__element--with-prefix"
+												name="length"
 											/>
+										</div>
+									</div>
+									<div class="input">
+										<label class="input__label">Ширина</label>
+										<div class="input__wrap">
+											<span class="input__prefix">cm</span>
+											<input
+												data-suffix="sm"
+												value="0"
+												min="0"
+												step="1"
+												type="number"
+												class="input__element input__element--with-prefix"
+												name="width"
+											/>
+										</div>
+									</div>
+									<div class="input">
+										<label class="input__label">Висота</label>
+										<div class="input__wrap">
+											<span class="input__prefix">cm</span>
+											<input
+												data-suffix="sm"
+												value="0"
+												min="0"
+												step="1"
+												type="number"
+												class="input__element input__element--with-prefix"
+												name="height"
+											/>
+										</div>
+									</div>
+									<div class="input">
+										<label class="input__label">Вага</label>
+										<div class="input__wrap">
+											<span class="input__prefix">кг</span>
+											<input
+												data-suffix="kg"
+												value="0"
+												min="0"
+												step="1"
+												type="number"
+												class="input__element input__element--with-prefix"
+												name="weight"
+											/>
+										</div>
+									</div>
+								</div>
+								<div class="computation">
+									<div class="computation__menu">
+										<div class="input">
+											<label class="input__label">К-ть</label>
+											<div class="input__wrap">
+												<span class="input__prefix">шт</span>
+												<input
+													value="0"
+													min="0"
+													step="1"
+													type="number"
+													class="input__element input__element--with-prefix"
+												/>
+											</div>
 										</div>
 										<button class="computation__btn">
 											<span class="computation__add-icon"></span>
@@ -248,7 +273,7 @@
 											<p class="computation__discont-text">
 												Багато відправляєш? Хочеш знижку? Тисни сюди
 											</p>
-											<button class="computation__discont-btn">
+											<button type="button" class="computation__discont-btn">
 												<img src="./src/assets/img/header/discont.svg" alt="" />
 											</button>
 										</div>
@@ -269,7 +294,7 @@
 													<span class="computation__choice-text">
 														1000 грн
 													</span>
-													<button class="btn btn--md">Замовити</button>
+													<button class="btn btn--sm">Замовити</button>
 												</div>
 											</div>
 											<div
@@ -288,7 +313,7 @@
 													<span class="computation__choice-text">
 														400 грн
 													</span>
-													<button class="btn btn--md">Замовити</button>
+													<button class="btn btn--sm">Замовити</button>
 												</div>
 											</div>
 										</div>
@@ -329,6 +354,49 @@
 									</div>
 								</div>
 							</form>
+						</div>
+						<div id="discount-modal" class="modal">
+							<div class="modal__wrap">
+								<div class="modal__header">
+									<button class="modal__close" type="button">
+										<img src="./src/assets/img/modal.svg" alt="#" />
+									</button>
+									<h4 class="modal__title">Отримати знижку</h4>
+									<form class="modal__form">
+										<input
+											class="modal__form-input"
+											type="text"
+											name=""
+											id=""
+											placeholder="Ваше ім’я"
+										/>
+										<input
+											class="modal__form-input"
+											type="text"
+											name=""
+											id=""
+											placeholder="Ваш телефон"
+										/>
+										<label class="checkbox">
+											<input
+												class="checkbox__input"
+												type="checkbox"
+												name=""
+												id=""
+											/>
+											<span class="checkbox__mark"></span>
+
+											погоджуюсь з використанням особистих даних
+											<a class="modal__link" href="#"
+												>та прочитав(ла) політику конфеденціальності</a
+											>
+										</label>
+										<button type="submit" class="btn btn--md modal__btn">
+											Надіслати
+										</button>
+									</form>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

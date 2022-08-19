@@ -25,8 +25,11 @@ a {
 	&--secondary {
 		background-color: #ffffff;
 	}
+	&--sm {
+		padding: 16px 32px;
+	}
 	&--md {
-		padding: 16px 69px;
+		padding: 26px 40px;
 	}
 	&--lg {
 		padding: 37px 50px;
@@ -41,7 +44,49 @@ a {
 	font-weight: 800;
 	font-size: 45px;
 	text-align: center;
+	line-height: 60px;
 	& span {
 		color: #ffbe2e;
+	}
+}
+
+//===========================
+.checkbox {
+	display: inline-block;
+	user-select: none;
+	font-weight: 300;
+	font-size: 14px;
+	position: relative;
+	padding-left: 35px;
+	&__input {
+		position: absolute;
+		z-index: -1;
+		opacity: 0;
+		&:checked ~ .checkbox__mark::after {
+			display: inline-block;
+		}
+		&:not(:disabled):not(:checked) ~ .checkbox__mark:hover {
+			background-color: #fff6e3;
+		}
+	}
+	&__mark {
+		display: inline-block;
+		width: 22px;
+		height: 22px;
+		border: 1px solid #ffbe2e;
+		border-radius: 50px;
+		position: absolute;
+		top: 4px;
+		left: 0;
+		&::after {
+			content: "";
+			display: none;
+			background: no-repeat url(/src/assets/img/modal2.svg);
+			width: 16px;
+			height: 16px;
+			position: absolute;
+			top: 0px;
+			left: 4px;
+		}
 	}
 }

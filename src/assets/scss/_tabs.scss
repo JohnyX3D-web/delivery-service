@@ -1,4 +1,5 @@
 .tabs {
+	position: relative;
 	&__buttons {
 		display: flex;
 	}
@@ -31,8 +32,9 @@
 	}
 	&__options {
 		display: none;
-		justify-content: space-between;
+
 		margin-top: 30px;
+		gap: 15px;
 		&--open {
 			display: flex;
 		}
@@ -143,38 +145,43 @@
 	}
 }
 
-.quantity {
-	display: flex;
-	flex-direction: column;
+.input {
 	position: relative;
-	&::before,
-	&::after {
-		position: absolute;
-		right: 32px;
-		pointer-events: none;
-	}
-	&::before {
-		content: "";
-		border-style: solid;
-		border-width: 17px 11.5px 0 11.5px;
-		border-color: #3e3b3b transparent transparent transparent;
-		top: 103px;
-	}
-	&::after {
-		content: "";
-		border-style: solid;
-		border-width: 0 11.5px 17px 11.5px;
-		border-color: transparent transparent #ffbd2e transparent;
-		top: 78px;
-	}
-	& label {
+
+	&__label {
+		display: block;
 		font-weight: 600;
 		font-size: 30px;
 		line-height: 37px;
 		color: #3e3b3b;
 		margin-bottom: 20px;
 	}
-	&__input {
+	&__wrap {
+		position: relative;
+		&::before,
+		&::after {
+			position: absolute;
+			right: 32px;
+			pointer-events: none;
+		}
+		&::before {
+			content: "";
+			border-style: solid;
+			border-width: 17px 11.5px 0 11.5px;
+			border-color: #3e3b3b transparent transparent transparent;
+			top: calc(50% + 3px);
+		}
+		&::after {
+			content: "";
+			border-style: solid;
+			border-width: 0 11.5px 17px 11.5px;
+			border-color: transparent transparent #ffbd2e transparent;
+			top: calc(50% - 3px);
+			transform: translateY(-100%);
+		}
+	}
+	&__element {
+		width: 100%;
 		background-color: #ffeecc;
 		border: 1px solid #ffbe2e;
 		border-radius: 41px;
@@ -183,6 +190,15 @@
 		font-size: 18px;
 		line-height: 22px;
 		color: #3e3b3b;
+		&--with-prefix {
+			padding-left: 60px;
+		}
+	}
+	&__prefix {
+		position: absolute;
+		left: 20px;
+		top: 50%;
+		transform: translateY(-50%);
 	}
 }
 
