@@ -1,0 +1,18 @@
+.couriers {
+	padding: 50px;
+	margin-bottom: 35px;
+	&__title {
+		text-align: left;
+		margin-bottom: 30px;
+	}
+
+	&__wrap {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 30px;
+	}
+	&__inner {
+		display: flex;
+		flex-direction: column;
+	}
+}

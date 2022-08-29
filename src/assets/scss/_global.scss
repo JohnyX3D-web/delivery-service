@@ -35,6 +35,10 @@ a {
 		padding: 37px 50px;
 		font-size: 30px;
 	}
+	&--xl {
+		padding: 37px 230px;
+		font-size: 30px;
+	}
 	&--block {
 		width: 100%;
 		display: block;
@@ -89,4 +93,26 @@ a {
 			left: 4px;
 		}
 	}
+}
+//===============================================
+.outline {
+	border: 1px solid #ffd78c;
+	border-radius: 30px;
+}
+// .input {
+// 	background: #ffeecc;
+// 	border: 1px solid #ffbe2e;
+// 	border-radius: 100px;
+// 	font-weight: 700;
+// 	color: #16110d;
+// 	font-size: 18px;
+// 	padding: 29px 30px;
+// }
+// .label {
+// 	font-weight: 600;
+// 	font-size: 25px;
+// 	color: #000000;
+// 	margin-bottom: 14px;
+// }
+.radio {
 }

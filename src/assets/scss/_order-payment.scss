@@ -1,0 +1,35 @@
+.payment {
+	padding: 60px 50px;
+	margin-bottom: 90px;
+	&__title {
+		text-align: left;
+		margin-bottom: 55px;
+	}
+	&__sum {
+		margin-bottom: 43px;
+	}
+	&__sum-text {
+		font-weight: 600;
+		font-size: 25px;
+		color: #000000;
+		padding-right: 52px;
+	}
+	&__wrap {
+		// display: grid;
+		// grid-template-columns: 1fr 1fr 1fr;
+		gap: 40px;
+		//grid-template-rows: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	&__text {
+		display: block;
+		font-weight: 600;
+		font-size: 25px;
+		color: #000000;
+		min-width: 170px;
+	}
+	&__select-btn {
+	}
+}

@@ -1,0 +1,46 @@
+.form {
+	color: #16110d;
+	padding: 60px 50px;
+	margin-bottom: 41px;
+	&__title {
+		font-weight: 700;
+		text-transform: uppercase;
+		display: block;
+		margin-bottom: 28px;
+	}
+	&__box {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 30px;
+		& span {
+			font-weight: 700;
+			font-size: 35px;
+			display: block;
+			margin-bottom: 48px;
+		}
+	}
+	&__filling {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 30px;
+	}
+	&__filling-from {
+		& div {
+			margin-bottom: 20px;
+		}
+	}
+	&__filling-to {
+		& div {
+			margin-bottom: 20px;
+		}
+	}
+	&__input {
+		display: flex;
+		flex-direction: column;
+	}
+	&__text {
+		display: block;
+		font-weight: 500;
+		margin-top: 40px;
+	}
+}
