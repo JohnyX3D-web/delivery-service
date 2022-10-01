@@ -1,4 +1,6 @@
 import Choices from "choices.js";
+import { OrderStatus } from "./constants.js";
+import getFormValues from "./getFormValues";
 //import "choices.js/public/assets/styles/choices.min.css";
 const form = document.querySelector("#international-delivery-form");
 const selectFrom = form.querySelector(`[name="from"]`);
@@ -25,7 +27,6 @@ fetch("http://localhost:3000/countries")
 const tabsBtn = document.querySelectorAll(".tabs__btn");
 
 tabsBtn.forEach(function (btn) {
-	console.log(btn);
 	btn.addEventListener("click", function () {
 		if (btn === "click") {
 			btn.classList.remove("tabs__btn--disable");
@@ -39,7 +40,7 @@ tabsBtn.forEach(function (btn) {
 
 const selectTypeBtn = form.querySelector(".select__btn");
 const selectInner = form.querySelector(".select__inner");
-const sendingType = form.querySelector(`[name="sendingType"]`);
+const parcelType = form.querySelector(`[name="parcelType"]`);
 
 selectTypeBtn.addEventListener("click", function (event) {
 	selectTypeBtn.classList.toggle("select__btn--open");
@@ -53,8 +54,8 @@ selectInner.addEventListener("click", function (event) {
 		selectTypeBtn.innerHTML = buttonBox.innerHTML;
 		selectInner.classList.remove("select__inner--open");
 		selectTypeBtn.classList.remove("select__btn--open");
-		sendingType.value = buttonBox.value;
-		sendingType.dispatchEvent(new Event("change", { bubbles: true }));
+		parcelType.value = buttonBox.value;
+		parcelType.dispatchEvent(new Event("change", { bubbles: true }));
 	}
 });
 //==================================================
@@ -64,21 +65,24 @@ const lengthInput = form.querySelector(`[name="length"]`);
 const widthInput = form.querySelector(`[name="width"]`);
 const heightInput = form.querySelector(`[name="height"]`);
 const weightInput = form.querySelector(`[name="weight"]`);
+const computationChoice = form.querySelector(".computation__choice");
+
 form.addEventListener("change", function (event) {
 	if (
 		selectFrom.value !== "" &&
 		selectTo.value !== "" &&
-		sendingType.value !== ""
+		parcelType.value !== ""
 	) {
 		tabsOptions.classList.add("tabs__options--open");
 	}
-	if (sendingType.value !== "parcel") {
-		weightInput.value = sendingType.value === "envelope-small" ? "0.3" : "0.5";
-		weightInput.disabled = true;
+	if (parcelType.value !== "parcel") {
+		weightInput.value = parcelType.value === "envelope-small" ? "0.3" : "0.5";
+		weightInput.readonly = true;
 	} else {
-		weightInput.disabled = false;
+		weightInput.readonly = false;
 	}
 });
+
 form.addEventListener("input", function (event) {
 	if (
 		lengthInput.value !== "0" &&
@@ -89,9 +93,34 @@ form.addEventListener("input", function (event) {
 		computation.classList.add("computation--open");
 	}
 });
+
 form.addEventListener("submit", function (event) {
 	event.preventDefault();
-	console.log(event);
+	const submitType = event.submitter.value;
+
+	if (submitType === "calc") {
+		computationChoice.classList.remove("computation__choice--hide");
+	} else {
+		const values = getFormValues(form);
+		values.delivery = event.submitter.value;
+		values.sendingType = "international"; // вручну додаємо вид пересилки
+		values.status = OrderStatus.Draft;
+
+		fetch("http://localhost:3000/orders", {
+			method: "post",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(values),
+		})
+			.then((response) => response.json())
+			.then(function (order) {
+				const newUrl = new URL(location.href);
+				newUrl.pathname = "order-details.html";
+				newUrl.searchParams.set("id", order.id);
+				location.href = newUrl.toString();
+			});
+	}
 });
 //==========================================
 const discountButton = form.querySelector(".computation__discont-btn");
@@ -124,3 +153,11 @@ function closeModal() {
 	discountModal.classList.remove("modal--open");
 	document.body.style.overflow = "";
 }
+//====================================
+const computationCustomsBtn = form.querySelector(
+	".computation__customs-parcels-info"
+);
+const computationContent = form.querySelector(".computation__content");
+computationCustomsBtn.addEventListener("click", function () {
+	computationContent.classList.toggle("computation__content--hide");
+});

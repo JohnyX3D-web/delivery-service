@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Експрес доставка</title>
 		<link rel="stylesheet" href="./src/assets/scss/style.scss" />
+		<script type="module" src="./src/constants.js"></script>
 		<!-- <link
 			rel="stylesheet"
 			href="./node_modules/bootstrap/dist/css/bootstrap.css"
@@ -116,7 +117,7 @@
 										</select>
 									</div>
 									<div class="select">
-										<select hidden name="sendingType">
+										<select hidden name="parcelType">
 											<option value=""></option>
 											<option value="envelope-small">envelope-small</option>
 											<option value="envelope-big">envelope-big</option>
@@ -239,7 +240,7 @@
 												data-suffix="kg"
 												value="0"
 												min="0"
-												step="1"
+												step="0.1"
 												type="number"
 												class="input__element input__element--with-prefix"
 												name="weight"
@@ -254,8 +255,9 @@
 											<div class="input__wrap">
 												<span class="input__prefix">шт</span>
 												<input
-													value="0"
-													min="0"
+													name="count"
+													value="1"
+													min="1"
 													step="1"
 													type="number"
 													class="input__element input__element--with-prefix"
@@ -266,7 +268,13 @@
 											<span class="computation__add-icon"></span>
 											Додати відправлення
 										</button>
-										<button class="btn btn--lg btn--block">Розрахувати</button>
+										<button
+											value="calc"
+											type="submit"
+											class="btn btn--lg btn--block"
+										>
+											Розрахувати
+										</button>
 									</div>
 									<div class="computation__inner">
 										<div class="computation__discont">
@@ -279,9 +287,14 @@
 										</div>
 										<p class="computation__text">
 											Пропонуємо ознайомитися з
-											<span>митним оформленням посилок</span>
+											<button
+												class="computation__customs-parcels-info"
+												type="button"
+											>
+												митним оформленням посилок
+											</button>
 										</p>
-										<div class="computation__choice">
+										<div class="computation__choice computation__choice--hide">
 											<div class="computation__choice-item">
 												<div class="computation__choice-title">
 													<p>Швидка доставка за 2-3 дні, через компанію</p>
@@ -294,7 +307,13 @@
 													<span class="computation__choice-text">
 														1000 грн
 													</span>
-													<button class="btn btn--sm">Замовити</button>
+													<button
+														value="delivery-type-1"
+														type="submit"
+														class="btn btn--sm"
+													>
+														Замовити
+													</button>
 												</div>
 											</div>
 											<div
@@ -313,11 +332,19 @@
 													<span class="computation__choice-text">
 														400 грн
 													</span>
-													<button class="btn btn--sm">Замовити</button>
+													<button
+														value="delivery-type-2"
+														type="submit"
+														class="btn btn--sm"
+													>
+														Замовити
+													</button>
 												</div>
 											</div>
 										</div>
-										<div class="computation__content">
+										<div
+											class="computation__content computation__content--hide"
+										>
 											<p class="computation__content-title">
 												Корисна iнформацiя стосовно митних платежiв для
 												отримання посилок:

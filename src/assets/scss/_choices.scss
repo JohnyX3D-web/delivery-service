@@ -10,6 +10,7 @@ $choices-font-size-md: 18px;
 @import "~choices.js/src/styles/choices.scss";
 
 .#{$choices-selector} {
+	width: 100%;
 	&__inner {
 		padding: 0 0px;
 		font-weight: 300;

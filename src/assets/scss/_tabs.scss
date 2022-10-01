@@ -51,11 +51,23 @@
 	flex-direction: column;
 	width: 424px;
 	position: relative;
+	&--line {
+		display: flex;
+		flex-direction: row;
+	}
+	&--xl {
+		width: 100%;
+	}
 	&__title {
 		font-weight: 600;
 		font-size: 30px;
 		line-height: 37px;
 		margin-bottom: 20px;
+		&--center {
+			margin-bottom: 0;
+			margin-right: 15px;
+			align-self: center;
+		}
 	}
 	$selector-separator-height: 20px;
 	&__btn {
@@ -284,18 +296,24 @@ input[type="number"]::-webkit-outer-spin-button {
 		background-color: inherit;
 	}
 	&__text {
-		font-weight: 400;
 		font-size: 25px;
 		line-height: 30px;
 		margin-bottom: 50px;
-		& span {
-			color: #ffbe2e;
-		}
+	}
+	&__customs-parcels-info {
+		background-color: transparent;
+		border: none;
+		padding: 0;
+		color: #ffbe2e;
+		font-size: inherit;
 	}
 	&__choice {
 		display: flex;
 		justify-content: space-between;
 		margin-bottom: 62px;
+		&--hide {
+			display: none;
+		}
 	}
 	&__choice-item {
 		border-radius: 40px;
@@ -339,6 +357,9 @@ input[type="number"]::-webkit-outer-spin-button {
 		line-height: 30px;
 	}
 	&__content {
+		&--hide {
+			display: none;
+		}
 	}
 	&__content-title {
 		font-size: 25px;

@@ -23,6 +23,13 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		gap: 30px;
+		&-text {
+			display: block;
+			text-align: center;
+			font-weight: 500;
+			font-size: 25px;
+			color: #3e3b3b;
+		}
 	}
 	&__filling-from {
 		& div {

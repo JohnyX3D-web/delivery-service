@@ -1,0 +1,149 @@
+.card {
+	margin-top: 60px;
+	margin-bottom: 130px;
+	&__road {
+		margin-bottom: 60px;
+	}
+	&__title {
+		margin-bottom: 32px;
+	}
+	&__wrap {
+	}
+	&__item {
+		padding: 30px 30px 40px 70px;
+		&:not(:last-child) {
+			margin-bottom: 30px;
+		}
+	}
+	&__referral {
+		display: flex;
+		justify-content: space-between;
+		padding-bottom: 15px;
+		font-weight: 700;
+		font-size: 25px;
+	}
+	&__referral-from {
+	}
+	&__referral-to {
+	}
+	&__cancel {
+		width: 20px;
+		height: 2px;
+		border: 1px solid #ffbe2e;
+		position: relative;
+		transform: rotate(45deg);
+		&::after {
+			content: "";
+			position: absolute;
+			width: 2px;
+			height: 20px;
+			border: 1px solid #ffbe2e;
+			top: -10px;
+			right: 8px;
+		}
+	}
+	&__content {
+		display: flex;
+		justify-content: space-between;
+	}
+	&__type {
+		display: flex;
+		align-items: center;
+		& img {
+			padding-right: 30px;
+		}
+	}
+	&__type-name {
+		font-weight: 700;
+		font-size: 25px;
+		padding-bottom: 10px;
+	}
+	&__type-number {
+		font-weight: 700;
+		font-size: 16px;
+	}
+	&__type-sum {
+	}
+	&__weight {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		border-right: 1px solid #c4c4c4;
+		border-left: 1px solid #c4c4c4;
+		padding: 0px 115px;
+	}
+	&__weight-text {
+		font-weight: 600;
+		font-size: 25px;
+		padding-bottom: 10px;
+	}
+	&__weight-number {
+		font-weight: 700;
+		font-size: 18px;
+		background-color: #ffbe2e;
+		border-radius: 37.5px;
+		text-align: center;
+		padding: 16px 48px;
+	}
+	&__weight-sum {
+	}
+	&__choice {
+		background: #ffbe2e;
+		border-radius: 37.5px;
+		padding: 25px 40px;
+		font-weight: 700;
+		font-size: 25px;
+	}
+	&__choice-box {
+		display: flex;
+	}
+	&__choice-content {
+	}
+	&__choice-text {
+		width: 262px;
+		line-height: 30px;
+		margin: 0 22px 22px 0;
+	}
+	&__choice-speed {
+	}
+	&__choice-day {
+	}
+	&__choice-pice {
+	}
+	&__choice-img {
+		height: 42px;
+	}
+	&__addressees {
+		display: flex;
+		justify-content: space-around;
+		padding-top: 35px;
+		font-size: 25px;
+		font-weight: 700;
+		gap: 30px;
+		line-height: 30px;
+	}
+	&__addressees-from {
+		flex: 0 1 50%;
+	}
+	&__addressees-to {
+		flex: 0 1 50%;
+	}
+	&__addressees-name {
+		padding-bottom: 20px;
+	}
+	&__addressees-tel {
+	}
+	&__addressees-text {
+		padding-bottom: 20px;
+	}
+}
+.completed {
+	margin-top: 20px;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: green;
+	&--no {
+		background-color: red;
+	}
+}

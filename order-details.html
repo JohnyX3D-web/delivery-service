@@ -6,13 +6,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Document</title>
 		<link rel="stylesheet" href="./src/assets/scss/style.scss" />
+		<script type="module" src="./src/order-details.js"></script>
+		<!-- <script type="module" src="./src/constants.js"></script> -->
 	</head>
 	<body>
 		<header class="header--secondary">
 			<div class="container">
 				<nav class="nav">
 					<div class="nav__logo">
-						<a class="nav__logo-img" href=""
+						<a class="nav__logo-img" href="/"
 							><img src="./src/assets/img/nav/logo.svg" alt="Logo-img"
 						/></a>
 					</div>
@@ -71,172 +73,276 @@
 		</header>
 		<main class="order">
 			<div class="container">
-				<section class="filling">
-					<span class="filling__navigation">Головна/Заповнення реквізитів</span>
-					<h1 class="title">Заповнення <span>реквізитів</span></h1>
-					<div class="filling__wrap outline">
-						<div class="filling__content">
-							<div class="filling__type">
-								<img src="./src/assets/img/order/filling1.png" alt="" />
-								<div>
-									<p class="filling__type-name">Посилка</p>
-									<p class="filling__type-number">33х25х15 см</p>
+				<form class="order__form">
+					<section class="filling">
+						<span class="filling__navigation"
+							>Головна/Заповнення реквізитів</span
+						>
+						<h1 class="title">Заповнення <span>реквізитів</span></h1>
+						<div class="filling__wrap outline">
+							<div class="filling__content">
+								<div class="filling__type">
+									<img src="./src/assets/img/order/filling1.png" alt="" />
+									<div>
+										<p class="filling__type-name">Посилка</p>
+										<p class="filling__type-number">
+											<span class="filling__type-sum"></span> см
+										</p>
+									</div>
+								</div>
+								<div class="filling__weight">
+									<p class="filling__weight-text">Вага</p>
+									<p class="filling__weight-number">
+										<span class="filling__weight-sum"></span> кг
+									</p>
+								</div>
+								<div class="filling__choice">
+									<div class="filling__choice-box">
+										<div class="filling__choice-content">
+											<p class="filling__choice-text">
+												<span class="filling__choice-speed"></span> доставка за
+												<span class="filling__choice-day"></span> дні, через
+												компанію
+											</p>
+											<span
+												><span class="filling__choice-pice"></span> грн</span
+											>
+										</div>
+										<img
+											src="/src/assets/img/order/filling2.png"
+											alt=""
+											class="filling__choice-img"
+										/>
+									</div>
 								</div>
 							</div>
-							<div class="filling__weight">
-								<p class="filling__weight-text">Вага</p>
-								<p class="filling__weight-number">4 кг</p>
+							<div class="filling__parameters">
+								<img
+									class="filling__parameters-img"
+									src="./src/assets/img/order/filling3.svg"
+									alt=""
+								/>
+								<button type="button" class="filling__parameters-btn">
+									Змінити параметри
+								</button>
 							</div>
-							<div class="filling__choice">
-								<div class="filling__choice-box">
-									<div class="filling__choice-content">
-										<p class="filling__choice-text">
-											Швидка доставка за 2-3 дні, через компанію
-										</p>
-										<span>1000 грн</span>
-									</div>
-									<img
-										src="/src/assets/img/order/filling2.png"
-										alt=""
-										class="filling__choice-img"
+						</div>
+					</section>
+
+					<section class="form outline">
+						<span class="form__title">форма заповняється аглійською</span>
+						<div class="form__box">
+							<span>Звідки</span>
+							<span>Куди</span>
+						</div>
+						<div class="form__filling">
+							<div class="form__filling-from">
+								<div class="input">
+									<label class="input__label">Відправник*</label>
+									<input
+										class="input__element"
+										type="text"
+										placeholder="Petrov Ivan Ivanovich"
+										name="fullNameSender"
+									/>
+								</div>
+								<div>
+									<label class="checkbox">
+										<input
+											class="checkbox__input"
+											type="checkbox"
+											name="legalEntitySender"
+											id=""
+										/>
+										<span class="checkbox__mark checkbox__mark--center"></span>
+										<span class="form__filling-text">Юридична особа</span>
+									</label>
+								</div>
+								<div class="input">
+									<label class="input__label">Поштовий індекс*</label>
+									<input
+										class="input__element"
+										type="text"
+										placeholder="77777"
+										name="zipCodeSender"
+									/>
+								</div>
+								<div class="input">
+									<label class="input__label">Країна*</label>
+									<input
+										class="input__element input__element--from"
+										type="text"
+										placeholder="Ukraine"
+									/>
+								</div>
+								<div class="input">
+									<label class="input__label">Місто*</label>
+									<input
+										class="input__element"
+										type="text"
+										placeholder="Ivano-Frankivsk"
+										name="citySender"
+									/>
+								</div>
+								<div class="input">
+									<label class="input__label">Вулиця, номер будинку*</label>
+									<input
+										class="input__element"
+										type="text"
+										placeholder="Galitska st, 145, apt. 56"
+										name="streetSender"
+									/>
+								</div>
+								<div class="input">
+									<label class="input__label">Телефон відправника*</label>
+									<input
+										class="input__element"
+										type="tel"
+										placeholder="0992555986"
+										name="phoneSender"
+									/>
+								</div>
+								<div class="input">
+									<label class="input__label">E-mail*</label>
+									<input
+										class="input__element"
+										type="email"
+										placeholder="E-mail"
+										name="emailSender"
+									/>
+								</div>
+							</div>
+							<div class="form__filling-to">
+								<div class="input">
+									<label class="input__label">Отримувач*</label>
+									<input
+										class="input__element"
+										type="text"
+										placeholder="Petrov Ivan Ivanovich"
+										name="fullNameReceiver"
+									/>
+								</div>
+								<div>
+									<label class="checkbox">
+										<input
+											class="checkbox__input"
+											type="checkbox"
+											name="legalEntityReceiver"
+										/>
+										<span class="checkbox__mark checkbox__mark--center"></span>
+										<span class="form__filling-text">Юридична особа</span>
+									</label>
+								</div>
+								<div class="input">
+									<label class="input__label">Поштовий індекс*</label>
+									<input
+										class="input__element"
+										type="text"
+										placeholder="77777"
+										name="zipCodeReceiver"
+									/>
+								</div>
+								<div class="input">
+									<label class="input__label">Країна*</label>
+									<input
+										class="input__element input__element--to"
+										type="text"
+										placeholder="Ukraine"
+									/>
+								</div>
+								<div class="input">
+									<label class="input__label">Місто*</label>
+									<input
+										class="input__element"
+										type="text"
+										placeholder="Ivano-Frankivsk"
+										name="cityReceiver"
+									/>
+								</div>
+								<div class="input">
+									<label class="input__label">Вулиця, номер будинку*</label>
+									<input
+										class="input__element"
+										type="text"
+										placeholder="Galitska st, 145, apt. 56"
+										name="streetReceiver"
+									/>
+								</div>
+								<div class="input">
+									<label class="input__label">Телефон відправника*</label>
+									<input
+										class="input__element"
+										type="tel"
+										placeholder="0992555986"
+										name="phoneReceiver"
+									/>
+								</div>
+								<div class="input">
+									<label class="input__label">E-mail*</label>
+									<input
+										class="input__element"
+										type="email"
+										placeholder="E-mail"
+										name="emailReceiver"
 									/>
 								</div>
 							</div>
 						</div>
-						<div class="filling__parameters">
-							<img
-								class="filling__parameters-img"
-								src="./src/assets/img/order/filling3.svg"
-								alt=""
-							/>
-							<button type="button" class="filling__parameters-btn">
-								Змінити параметри
-							</button>
-						</div>
-					</div>
-				</section>
+						<span class="form__text">* - обов’язкові для заповення</span>
+					</section>
 
-				<section class="form outline">
-					<span class="form__title">форма заповняється аглійською</span>
-					<div class="form__box">
-						<span>Звідки</span>
-						<span>Куди</span>
-					</div>
-					<form class="form__filling">
-						<div class="form__filling-from">
-							<div class="input">
-								<label class="input__label">Відправник*</label>
-								<input class="input__element" type="text" />
+					<section class="couriers outline">
+						<h2 class="couriers__title title">
+							<span>Дата і час</span> приїзду кур’єра
+						</h2>
+						<div class="couriers__wrap">
+							<div class="couriers__inner">
+								<label class="input__label">Дата приїзду кур’єра</label>
+								<input
+									class="input__element"
+									type="text"
+									placeholder="Виберіть час"
+									onfocus="this.type='date'"
+									onblur="this.type='text'"
+									name="deliveryDate"
+								/>
 							</div>
-							<div>
-								<label class="">Юридична особа</label>
-								<input class="radio" type="radio" />
-							</div>
-							<div class="input">
-								<label class="input__label">Поштовий індекс*</label>
-								<input class="input__element" type="text" />
-							</div>
-							<div class="input">
-								<label class="input__label">Країна*</label>
-								<input class="input__element" type="text" />
-							</div>
-							<div class="input">
-								<label class="input__label">Місто*</label>
-								<input class="input__element" type="text" />
-							</div>
-							<div class="input">
-								<label class="input__label">Вулиця, номер будинку*</label>
-								<input class="input__element" type="text" />
-							</div>
-							<div class="input">
-								<label class="input__label">Телефон відправника*</label>
-								<input class="input__element" type="text" />
-							</div>
-							<div class="input">
-								<label class="input__label">E-mail*</label>
-								<input class="input__element" type="text" />
-							</div>
-						</div>
-						<div class="form__filling-to">
-							<div class="input">
-								<label class="input__label">Отримувач*</label>
-								<input class="input__element" type="text" />
-							</div>
-							<div>
-								<label class="">Юридична особа</label>
-								<input class="radio" type="radio" />
-							</div>
-							<div class="input">
-								<label class="input__label">Поштовий індекс*</label>
-								<input class="input__element" type="text" />
-							</div>
-							<div class="input">
-								<label class="input__label">Країна*</label>
-								<input class="input__element" type="text" />
-							</div>
-							<div class="input">
-								<label class="input__label">Місто*</label>
-								<input class="input__element" type="text" />
-							</div>
-							<div class="input">
-								<label class="input__label">Вулиця, номер будинку*</label>
-								<input class="input__element" type="text" />
-							</div>
-							<div class="input">
-								<label class="input__label">Телефон відправника*</label>
-								<input class="input__element" type="text" />
-							</div>
-							<div class="input">
-								<label class="input__label">E-mail*</label>
-								<input class="input__element" type="text" />
-							</div>
-						</div>
-					</form>
-					<span class="form__text">* - обов’язкові для заповення</span>
-				</section>
 
-				<section class="couriers outline">
-					<h2 class="couriers__title title">
-						<span>Дата і час</span> приїзду кур’єра
-					</h2>
-					<div class="couriers__wrap">
-						<div class="couriers__inner">
-							<span class="input__label">Дата приїзду кур’єра</span>
-							<input
-								class="input__element"
-								type="date"
-								placeholder="Виберіть дату"
-							/>
+							<div class="couriers__inner">
+								<div class="select select--xl">
+									<label class="select__title">Час приїзду кур’єра</label>
+									<select class="select__item" name="deliveryTime">
+										<option value="" selected>Виберіть час</option>
+										<option value="1">10:00 - 13:00</option>
+										<option value="2">13:00 - 17:00</option>
+									</select>
+								</div>
+							</div>
 						</div>
-						<div class="couriers__inner">
-							<span class="input__label">Час приїзду кур’єра</span>
-							<button
-								type="button"
-								class="select__btn select__btn--with-border"
-							>
-								Виберіть час
-							</button>
-						</div>
-					</div>
-				</section>
+					</section>
 
-				<section class="payment outline">
-					<h3 class="payment__title title"><span>Оплата</span></h3>
-					<div class="payment__sum">
-						<span class="payment__sum-text">Вартість:</span>
-						<span class="payment__sum-text">500 грн</span>
-					</div>
-					<div class="payment__wrap">
-						<span class="payment__text">Вид оплати</span>
-						<button
-							type="button"
-							class="payment__select-btn select__btn select__btn--with-border select__btn--secondary"
-						>
-							Виберіть спосіб оплати
-						</button>
-						<button class="btn btn--xl">Оплатити</button>
-					</div>
-				</section>
+					<section class="payment outline">
+						<h3 class="payment__title title"><span>Оплата</span></h3>
+						<div class="payment__sum">
+							<span class="payment__sum-text">Вартість:</span>
+							<span class="payment__sum-text">500 грн</span>
+						</div>
+						<div class="payment__wrap">
+							<div class="select select--line select--xl">
+								<label class="select__title select__title--center"
+									>Вид оплати</label
+								>
+								<select class="select__item" name="paymentType">
+									<option value="" selected>Виберіть спосіб оплати</option>
+									<option value="1">Готівка кур’єру</option>
+									<option value="2">Безготівковий розрахунок</option>
+									<option value="3">Картою на сайті</option>
+								</select>
+							</div>
+							<button type="submit" class="btn btn--xl">Оплатити</button>
+						</div>
+					</section>
+				</form>
 			</div>
 		</main>
 
