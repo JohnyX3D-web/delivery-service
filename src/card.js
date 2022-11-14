@@ -2,6 +2,47 @@ import { deliveryType, OrderStatus } from "./constants.js";
 
 const card = document.querySelector(".card__wrap");
 
+function getParcelTypeImgUrl(parcelType) {
+	const imageUrlOne = new URL(
+		"./assets/img/header/slect-img-1.svg",
+		import.meta.url
+	);
+	const imageUrlTwo = new URL(
+		"./assets/img/header/slect-img-2.svg",
+		import.meta.url
+	);
+	const imageUrlThree = new URL(
+		"./assets/img/header/slect-img-3.svg",
+		import.meta.url
+	);
+
+	if (parcelType === "envelope-small") {
+		return imageUrlOne;
+	} else if (parcelType === "envelope-big") {
+		return imageUrlTwo;
+	} else {
+		return imageUrlThree;
+	}
+}
+// function getParcelTypeImgUrl(parcelType) {
+// 	let imgName;
+
+// 	if (parcelType === "envelope-small") {
+// 		imgName = "slect-img-1.svg";
+// 	} else if (parcelType === "envelope-big") {
+// 		imgName = "slect-img-2.svg";
+// 	} else {
+// 		imgName = "slect-img-3.svg";
+// 	}
+
+// 	const imageUrlOne = new URL(
+// 		`./assets/img/header/${imgName}`,
+// 		import.meta.url
+// 	);
+
+// 	return imageUrlOne;
+// }
+
 fetch("http://localhost:3000/countries")
 	.then((response) => response.json())
 	.then((countriesData) => {
@@ -30,16 +71,27 @@ fetch("http://localhost:3000/countries")
 							? `<div class="completed"></div>`
 							: `<div class="completed completed--no"></div>`;
 
+					const cancelBtn =
+						order.status === "draft" || order.status === undefined
+							? `<button value="${order.id}" class="card__cancel"></button>`
+							: "";
+
+					const changeCard =
+						order.status === "draft" || order.status === undefined
+							? `<a class="filling__parameters-btn" href="/order-details.html?id=${order.id}">Змінити замовлення</a>`
+							: "";
+
 					return `
 							<div class="card__item outline">
 								<div class="card__referral">
 									<div class="card__referral-from">Звідки: ${from.name}</div>
 									<div class="card__referral-to">Куди: ${to.name}</div>
-									<button value="${order.id}" class="card__cancel"></button>
+
+									${cancelBtn}
 								</div>
 								<div class="card__content">
 									<div class="card__type">
-										<img src="./src/assets/img/order/filling1.png" alt="" />
+										<img src="${getParcelTypeImgUrl(order.parcelType)}" alt="" />
 										<div>
 											<p class="card__type-name">Посилка</p>
 											<p class="card__type-number">
@@ -101,23 +153,24 @@ fetch("http://localhost:3000/countries")
 								}
 								
 								<div>${completedStatus}</div>
+								<div>${changeCard}</div>
 							</div>
 						`;
 				});
 
 				card.innerHTML = cardHtml.join("");
-				const cardItems = card.querySelectorAll(".card__item");
-
-				cardItems.forEach(function (cardItem) {
-					const button = cardItem.querySelector(".card__cancel");
-					button.addEventListener("click", function (event) {
-						const orderId = button.value;
-						fetch(`http://localhost:3000/orders/${orderId}`, {
-							method: "DELETE",
-						}).then(function () {
-							button.closest(".card__item").remove();
-						});
-					});
-				});
 			});
 	});
+
+card.addEventListener("click", function (event) {
+	const deleteBtn = event.target.closest(".card__cancel");
+
+	if (deleteBtn !== null) {
+		const orderId = deleteBtn.value;
+		fetch(`http://localhost:3000/orders/${orderId}`, {
+			method: "DELETE",
+		}).then(function () {
+			deleteBtn.closest(".card__item").remove();
+		});
+	}
+});

@@ -16,8 +16,8 @@
 		}
 	}
 	&__referral {
-		display: flex;
-		justify-content: space-between;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
 		padding-bottom: 15px;
 		font-weight: 700;
 		font-size: 25px;

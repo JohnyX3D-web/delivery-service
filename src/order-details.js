@@ -52,7 +52,6 @@ new Choices(paymentType);
 form.addEventListener("submit", function (event) {
 	event.preventDefault();
 	const values = getFormValues(form);
-	//debugger;
 	values.status = OrderStatus.Completed; //вручну змінюємо статус замовлення
 	fetch(`http://localhost:3000/orders/${orderId}`, {
 		method: "PATCH",
@@ -63,9 +62,8 @@ form.addEventListener("submit", function (event) {
 	})
 		.then((response) => response.json())
 		.then(function (order) {
-			// const newUrl = new URL(location.href);
-			// newUrl.pathname = "order-details.html";
-			// newUrl.searchParams.set("id", order.id);
-			// location.href = newUrl.toString();
+			const newUrl = new URL(location.href);
+			newUrl.pathname = "card.html";
+			location.href = newUrl.toString();
 		});
 });
