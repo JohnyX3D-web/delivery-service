@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ua">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Document</title>
-		<link rel="stylesheet" href="index.4f2a3b75.css">
+		<title>Експрес доставка</title>
+		<link rel="stylesheet" href="index.428d2dd4.css">
+		<script type="module" src="./src/constants.js"></script>
 		<!-- <link
 			rel="stylesheet"
 			href="./node_modules/bootstrap/dist/css/bootstrap.css"
@@ -51,7 +52,9 @@
 							<a href="tel:380676221023">(067) 622-10-23</a>
 						</li>
 					</ul>
-					<img src="shopping-cart.9117b704.svg" alt="" class="nav__shopping-cart">
+					<a href="http://localhost:1234/card.html#" class="nav__btn-card">
+						<img src="shopping-cart.9117b704.svg" alt="" class="nav__shopping-cart">
+					</a>
 				</nav>
 				<div class="header__search">
 					<form class="header__search-form">
@@ -68,121 +71,468 @@
 							Експрес доставка листів і посилок
 						</h1>
 					</div>
+
 					<div class="tabs">
 						<div class="tabs__buttons">
-							<button class="tabs__btn">Міжнародна доставка</button>
+							<button class="tabs__btn tabs__btn--active">
+								Міжнародна доставка
+							</button>
 							<button class="tabs__btn tabs__btn--disable">
 								Доставка по Україні
 							</button>
 						</div>
-						<div class="tabs__content">
-							<div class="select">
-								<span class="select__title">Звідки</span>
-								<button class="select__btn select__btn--with-border">
-									Виберіть країну
-								</button>
-								<ul class="select__list">
-									<li class="select__list-item">
-										<button class="select__btn">Україна</button>
-									</li>
-									<li class="select__list-item">
-										<button class="select__btn">Польща</button>
-									</li>
-									<li class="select__list-item">
-										<button class="select__btn">Великобританія</button>
-									</li>
-								</ul>
-							</div>
-							<div class="select">
-								<span class="select__title">Звідки</span>
-								<button class="select__btn select__btn--with-border">
-									Виберіть країну
-								</button>
-								<ul class="select__list">
-									<li class="select__list-item">
-										<button class="select__btn">Україна</button>
-									</li>
-									<li class="select__list-item">
-										<button class="select__btn">Польща</button>
-									</li>
-									<li class="select__list-item">
-										<button class="select__btn">Великобританія</button>
-									</li>
-								</ul>
-							</div>
-							<div class="select">
-								<span class="select__title">Звідки</span>
-								<button class="select__btn select__btn--with-border">
-									Виберіть країну
-								</button>
-								<ul class="select__list"></ul>
+						<div class="tabs__wrapper">
+							<form id="international-delivery-form" class="tabs__content">
+								<div class="select-wrapper">
+									<div class="select">
+										<label class="select__title">Звідки</label>
+										<select class="select__item" name="from">
+											<option value="" selected="">Виберіть країну</option>
+										</select>
+									</div>
+									<div class="select">
+										<label class="select__title">Куди</label>
+										<select class="select__item" name="to">
+											<option value="" selected="">Виберіть країну</option>
+										</select>
+									</div>
+									<div class="select">
+										<select hidden="" name="parcelType">
+											<option value=""></option>
+											<option value="envelope-small">envelope-small</option>
+											<option value="envelope-big">envelope-big</option>
+											<option value="parcel">parcel</option>
+										</select>
+										<span class="select__title">Тип відправлення</span>
+										<button type="button" class="select__btn select__btn--with-border">
+											Виберіть тип відправлення
+										</button>
+										<div class="select__inner">
+											<div class="select__box">
+												<button value="envelope-small" type="button" class="select__box-btn">
+													<div class="select__box-wrap">
+														<img src="slect-img-1.7b372594.svg" alt="select img" class="select__box-img">
+														<div>
+															<p class="select__box-title">Конверт</p>
+															<span class="select__box-text">0.3 кг</span>
+														</div>
+													</div>
+												</button>
+												<button value="envelope-big" type="button" class="select__box-btn">
+													<div class="select__box-wrap">
+														<img src="slect-img-2.63548df6.svg" alt="select img" class="select__box-img">
+														<div>
+															<p class="select__box-title">Конверт</p>
+															<span class="select__box-text">0.5 кг</span>
+														</div>
+													</div>
+												</button>
+												<button value="parcel" type="button" class="select__box-btn">
+													<div class="select__box-wrap">
+														<img src="slect-img-3.1750cc77.svg" alt="select img" class="select__box-img">
+														<div>
+															<p class="select__box-title">Посилка</p>
+														</div>
+													</div>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tabs__options">
+									<div class="input">
+										<label class="input__label">Довжина</label>
+										<div class="input__wrap">
+											<span class="input__prefix">cm</span>
+											<input data-suffix="sm" value="0" min="0" step="1" type="number" class="input__element input__element--with-prefix" name="length">
+										</div>
+									</div>
+									<div class="input">
+										<label class="input__label">Ширина</label>
+										<div class="input__wrap">
+											<span class="input__prefix">cm</span>
+											<input data-suffix="sm" value="0" min="0" step="1" type="number" class="input__element input__element--with-prefix" name="width">
+										</div>
+									</div>
+									<div class="input">
+										<label class="input__label">Висота</label>
+										<div class="input__wrap">
+											<span class="input__prefix">cm</span>
+											<input data-suffix="sm" value="0" min="0" step="1" type="number" class="input__element input__element--with-prefix" name="height">
+										</div>
+									</div>
+									<div class="input">
+										<label class="input__label">Вага</label>
+										<div class="input__wrap">
+											<span class="input__prefix">кг</span>
+											<input data-suffix="kg" value="0" min="0" step="0.1" type="number" class="input__element input__element--with-prefix" name="weight">
+										</div>
+									</div>
+								</div>
+								<div class="computation">
+									<div class="computation__menu">
+										<div class="input">
+											<label class="input__label">К-ть</label>
+											<div class="input__wrap">
+												<span class="input__prefix">шт</span>
+												<input name="count" value="1" min="1" step="1" type="number" class="input__element input__element--with-prefix">
+											</div>
+										</div>
+										<button class="computation__btn">
+											<span class="computation__add-icon"></span>
+											Додати відправлення
+										</button>
+										<button value="calc" type="submit" class="btn btn--lg btn--block">
+											Розрахувати
+										</button>
+									</div>
+									<div class="computation__inner">
+										<div class="computation__discont">
+											<p class="computation__discont-text">
+												Багато відправляєш? Хочеш знижку? Тисни сюди
+											</p>
+											<button type="button" class="computation__discont-btn">
+												<img src="discont.0013112e.svg" alt="">
+											</button>
+										</div>
+										<p class="computation__text">
+											Пропонуємо ознайомитися з
+											<button class="computation__customs-parcels-info" type="button">
+												митним оформленням посилок
+											</button>
+										</p>
+										<div class="computation__choice computation__choice--hide">
+											<div class="computation__choice-item">
+												<div class="computation__choice-title">
+													<p>Швидка доставка за 2-3 дні, через компанію</p>
+													<img src="choice.f1e60034.png" alt="">
+												</div>
+												<div class="computation__choice-price">
+													<span class="computation__choice-text">
+														1000 грн
+													</span>
+													<button value="delivery-type-1" type="submit" class="btn btn--sm">
+														Замовити
+													</button>
+												</div>
+											</div>
+											<div class="computation__choice-item computation__choice-item--border">
+												<div class="computation__choice-title computation__choice-title--secondary">
+													<p>Звичайна доставка за 4-5 днів, через компанію</p>
+													<img src="choice.f1e60034.png" alt="">
+												</div>
+												<div class="computation__choice-price">
+													<span class="computation__choice-text">
+														400 грн
+													</span>
+													<button value="delivery-type-2" type="submit" class="btn btn--sm">
+														Замовити
+													</button>
+												</div>
+											</div>
+										</div>
+										<div class="computation__content computation__content--hide">
+											<p class="computation__content-title">
+												Корисна iнформацiя стосовно митних платежiв для
+												отримання посилок:
+											</p>
+											<div class="computation__content-box">
+												<ul>
+													<li class="computation__content-subtitle">
+														Поріг безмитного ввезення:
+													</li>
+													<li class="computation__content-subtitle">
+														Податок при перевищенні порогу:
+													</li>
+													<li class="computation__content-subtitle">
+														Митний податок:
+													</li>
+													<li class="computation__content-subtitle">
+														Iнформацiя:
+													</li>
+												</ul>
+												<ul>
+													<li class="computation__content-text">
+														до 1000AUD (≈738.6USD)
+													</li>
+													<li class="computation__content-text">10%</li>
+													<li class="computation__content-text">От 0 до 10%</li>
+													<li class="computation__content-text">
+														Деякi товари не пiдлягають обкладенню митними
+														зборами (наприклад ноутбуки та iншi електроннi
+														вироби).
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div id="discount-modal" class="modal">
+							<div class="modal__wrap">
+								<div class="modal__header">
+									<button class="modal__close" type="button">
+										<img src="modal.6f2ce7a6.svg" alt="#">
+									</button>
+									<h4 class="modal__title">Отримати знижку</h4>
+									<form class="modal__form">
+										<input class="modal__form-input" type="text" name="" id="" placeholder="Ваше ім’я">
+										<input class="modal__form-input" type="text" name="" id="" placeholder="Ваш телефон">
+										<label class="checkbox">
+											<input class="checkbox__input" type="checkbox" name="" id="">
+											<span class="checkbox__mark"></span>
+
+											погоджуюсь з використанням особистих даних
+											<a class="modal__link" href="#">та прочитав(ла) політику конфеденціальності</a>
+										</label>
+										<button type="submit" class="btn btn--md modal__btn">
+											Надіслати
+										</button>
+									</form>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="container">
-				<select class="selec" name="" id="">
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-				</select>
-				Lorem ipsum, dolor sit amet consectetur adipisicing elit. Praesentium,
-				tempore voluptas? Modi magni, dolorem, nobis suscipit repellendus
-				dolorum ad qui amet reiciendis autem consectetur eius est unde tempora
-				minus. Eius, fugiat. Numquam accusamus ut harum ea vero molestiae quod
-				dicta hic neque dolorem necessitatibus labore accusantium fugiat ipsam,
-				laudantium voluptatum inventore quae autem minus dignissimos iusto! Quo
-				ipsa quisquam ipsum totam quis accusantium vel, aspernatur in commodi
-				tempora sequi perferendis! Repudiandae ipsum dolor accusantium fugiat
-				aspernatur amet facilis illo repellendus et aperiam. Esse quae odit sed
-				est, impedit, suscipit facere, aut a exercitationem dolore at soluta
-				ipsum? Quis voluptas autem perspiciatis explicabo, temporibus, dolorem
-				officia enim sed aliquid, voluptatem incidunt eos quae facilis repellat?
-				Magnam dolorem odit necessitatibus ducimus quam repudiandae culpa
-				aliquam quod, animi tempore. Fugit minus sit obcaecati? Quam, totam
-				velit. Commodi, deleniti ex qui quo quibusdam quia expedita accusamus
-				tempore reprehenderit similique quis! Provident velit ad similique rem
-				placeat suscipit inventore consequatur. Maiores tempora necessitatibus,
-				eius atque deserunt, dolorem earum ullam vero error sapiente velit
-				dolorum iusto magni natus exercitationem qui amet assumenda dolor! Ea
-				expedita maiores officiis sapiente. Dolore, quibusdam officiis earum
-				adipisci itaque iusto fugiat quis mollitia explicabo, deserunt tenetur
-				tempora architecto. Minima delectus in molestiae sequi animi modi iure,
-				exercitationem voluptate, optio veniam aspernatur inventore, mollitia
-				eligendi consequuntur quasi ab? Iste error accusamus quas nesciunt id
-				illo. Excepturi, magni rerum corporis ea nostrum adipisci aliquid quos
-				cum magnam cupiditate soluta ex perferendis qui voluptas eaque saepe
-				fuga assumenda doloremque, nihil delectus? Fugiat praesentium voluptate,
-				saepe recusandae perspiciatis iste voluptas at quae ut officiis hic?
-				Repellat optio vero eius quasi dicta ea reiciendis voluptatibus vel ut,
-				quo libero a tempore dolore quaerat molestiae cupiditate ab magni.
-				Facere in harum ex deserunt aliquid, voluptates impedit blanditiis?
-				Optio voluptatem eveniet ea! Error earum porro repellendus qui
-				assumenda, culpa facere! Ad ex sit cupiditate iusto enim similique
-				consectetur optio, corporis odio quaerat architecto, harum praesentium
-				adipisci est doloremque, consequatur nam nisi iure eum esse veritatis
-				error vero. Consequuntur blanditiis consequatur maiores obcaecati eum,
-				et repellendus dolores quo quam cumque nostrum distinctio vitae, ab
-				ipsum soluta! Repellat doloribus obcaecati fugiat quaerat architecto ad
-				error magni? Quasi impedit fugiat quos tenetur possimus, ab quam maiores
-				laudantium assumenda nostrum id culpa? Repellendus quibusdam tenetur
-				tempore! Assumenda, aliquid. Sunt officia quam earum laudantium dolore
-				dolor vel aliquid, reiciendis distinctio neque voluptates nulla pariatur
-				fugiat assumenda! Quos accusantium illum rerum odit nemo recusandae
-				placeat voluptates quasi velit fugiat aspernatur inventore voluptatibus
-				non harum deserunt at modi qui culpa, asperiores id esse veniam dolor
-				in. Dolor nesciunt magnam dolores, libero nulla qui quam vero fuga saepe
-				repellendus! Beatae sint perspiciatis quidem autem, placeat quam
-				voluptates iusto facere dolore quod, enim explicabo? Eveniet voluptatum
-				culpa minima saepe illum dolore, esse ipsum veniam nihil deleniti
-				accusamus tenetur aliquam fuga, eius molestias fugiat natus architecto
-				necessitatibus qui et quasi. Doloribus harum pariatur blanditiis?
-				Tempore quia nam aspernatur illo velit praesentium inventore explicabo
-				omnis animi. Tenetur, optio aperiam amet cumque praesentium debitis ex
-				labore quasi neque, vero dignissimos.
-			</div>
 		</header>
-		<script type="module" src="index.5107cd3d.js"></script>
+
+		<main>
+			<section class="company">
+				<div class="container">
+					<div class="company__top">
+						<h2 class="company__top-title title">Нам <span>довіряють</span></h2>
+						<div class="company__img">
+							<img src="company-img-1.0eab4d4f.png" alt="CompanyImg">
+							<img src="company-img-2.399c8ac5.png" alt="CompanyImg">
+							<img src="company-img-3.252460c8.png" alt="CompanyImg">
+							<img src="company-img-4.027a4307.png" alt="CompanyImg">
+							<img src="company-img-5.2e938a7b.png" alt="CompanyImg">
+							<img src="company-img-6.2010a8cb.png" alt="CompanyImg">
+							<img src="company-img-7.c969955e.png" alt="CompanyImg">
+							<img src="company-img-8.ae16ae86.png" alt="CompanyImg">
+						</div>
+					</div>
+					<div class="company__bottom">
+						<h2 class="company__bottom-title title">
+							<span>GlobalPost</span> - офіційний представник компаній:
+						</h2>
+						<div class="company__inner">
+							<div class="company__item">
+								<img src="company-img-01.c88043b3.png" alt="CompanyImg">
+							</div>
+							<div class="company__item">
+								<img src="company-img-02.103ebd19.png" alt="CompanyImg">
+							</div>
+							<div class="company__item">
+								<img src="company-img-03.7330e9d2.png" alt="CompanyImg">
+							</div>
+							<div class="company__item">
+								<img src="company-img-04.60b8ba05.png" alt="CompanyImg">
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="services">
+				<div class="container">
+					<h2 class="services__title title">
+						Послуги, якими <span>ви можете</span> скористатися
+					</h2>
+					<div class="services__inner">
+						<a href="" class="services__link">Кур’єрські послуги</a>
+						<a href="" class="services__link">Експрес-доставка</a>
+						<a href="" class="services__link">Автоперевезення</a>
+						<a href="" class="services__link">Автоперевезення</a>
+						<a href="" class="services__link">Авіаперевезення</a>
+					</div>
+					<div class="services__content">
+						<div class="services__content-box">
+							<p class="services__content-text">
+								Доставка кур’єром в інші міста приємно здивує вартістю, що
+								вигідно відрізняє GlobalPost від інших служб доставки.
+							</p>
+							<p class="services__content-text">
+								Швидше за все доставляються посилки в обласні центри. Важлива
+								перевага доставки від GlobalPost є можливість доставити вантаж в
+								будь-який куточок країни протягом 5 діб або менше
+							</p>
+							<button class="btn services__content-btn">
+								Викликати кур’єра
+							</button>
+						</div>
+						<img src="services.ecf23bf3.png" alt="Services-Img">
+					</div>
+				</div>
+			</section>
+
+			<section class="profit">
+				<div class="container">
+					<h2 class="profit__title title">
+						Чому наша доставка <span>вигідна для вас?</span>
+					</h2>
+					<div class="profit__list">
+						<div class="profit__item">
+							<img src="profit1.595ceb40.png" alt="">
+							<div class="profit__item-content">
+								<p class="profit__item-title">Персональний менеджер-логіст</p>
+								<p class="profit__item-text">
+									Вашою послугою займеться компетентний менеджер, який завжди
+									буде на зв'язку
+								</p>
+							</div>
+						</div>
+						<div class="profit__item">
+							<img src="profit2.73014a12.png" alt="">
+							<div class="profit__item-content">
+								<p class="profit__item-title">Розробка логістичних схем</p>
+								<p class="profit__item-text">
+									При здійсненні перевезень вантажів ми підбираємо логістичну
+									схему доставки вантажу під кожного клієнта
+								</p>
+							</div>
+						</div>
+						<div class="profit__item">
+							<img src="profit3.e5aeadfe.png" alt="">
+							<div class="profit__item-content">
+								<p class="profit__item-title">
+									Перевезення ва- нтажів "Під Ключ"
+								</p>
+								<p class="profit__item-text">
+									Наші фахівці контролюють весь процес доставки вашого вантажу
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="profit__box">
+						<ul class="profit__box-list">
+							<h3 class="profit__box-title title">
+								Ми можемо і вміємо <span> доставляти швидко</span>
+							</h3>
+							<li class="profit__box-item">у той самий день</li>
+							<li class="profit__box-item">на наступний день на ранок</li>
+						</ul>
+						<img src="profit4.62e1e147.png" alt="">
+					</div>
+				</div>
+			</section>
+
+			<section class="steps">
+				<div class="container">
+					<h2 class="steps__title title">
+						Ви <span>юридична особа</span> і шукаєте надійну кур’єрську службу?
+					</h2>
+					<p class="steps__subtitle">
+						Як почати співпрацю з нами? 3 простих кроки:
+					</p>
+					<div class="steps__inner">
+						<div class="steps__item">
+							<h4 class="steps__item-title">Крок 1</h4>
+							<p class="steps__item-subtitle">Вартість</p>
+							<p class="steps__item-text">
+								Тарифи можна переглянути тут, або надіслати нам запит на пошту
+								1@globalpost.ua, або телефоном, вайбером, телеграм
+							</p>
+						</div>
+						<img class="steps__arrow-first" src="arrow-step1.743c32e0.svg" alt="Arrow">
+						<div class="steps__item steps__item--down">
+							<h4 class="steps__item-title">Крок 2</h4>
+							<p class="steps__item-subtitle">Підписуєте договір</p>
+							<p class="steps__item-text">Скануєте, відправляєте нам</p>
+						</div>
+						<img class="steps__arrow-second" src="arrow-step1.743c32e0.svg" alt="Arrow">
+						<div class="steps__item">
+							<h4 class="steps__item-title">Крок 3</h4>
+							<p class="steps__item-subtitle">Викликаєте кур’єра</p>
+							<p class="steps__item-text">
+								і відправляєте свої документ або посилки. Насолоджуєтесь швидкою
+								доставкою.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="contacts">
+				<div class="container">
+					<div class="contacts__inner">
+						<img src="contacts.df6e1d8b.png" alt="Contacts">
+						<div class="contacts__box">
+							<h3 class="contacts__box-title">Виникли запитання?</h3>
+							<p class="contacts__box-subtitle">Звертайтеся до професіоналів</p>
+							<p class="contacts__box-text">
+								Залиште свої дані і ми зв'яжемося з вами
+							</p>
+							<form class="contacts__form">
+								<input class="contacts__form-input" type="text" name="name" placeholder="Ваше ім’я">
+								<input class="contacts__form-input" type="tel" name="phone" placeholder="Ваш телефон">
+								<input class="contacts__form-input" type="text" name="question" placeholder="Ваше запитання">
+								<button class="btn" type="submit">Надіслати</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="footer">
+			<div class="container">
+				<div class="footer__inner">
+					<div class="logo">
+						<a href=""><img src="logo.a89eb58a.svg" alt="logo"></a>
+					</div>
+
+					<ul class="footer__services">
+						<div class="footer__services-item">
+							<a href="#">Кур'єрські послуги</a>
+						</div>
+						<div class="footer__services-item">
+							<a href="#">Авіаперевезення</a>
+						</div>
+						<div class="footer__services-item">
+							<a href="#">Експрес-доставка</a>
+						</div>
+						<div class="footer__services-item">
+							<a href="#">Міжнародна доставка</a>
+						</div>
+						<div class="footer__services-item">
+							<a href="#">Про компанію</a>
+						</div>
+					</ul>
+					<ul class="footer__menu">
+						<li class="footer__menu-item"><a href="#">Блог</a></li>
+						<li class="footer__menu-item"><a href="#">Контакти</a></li>
+						<li class="footer__menu-item"><a href="#">Особистий кабiнет</a></li>
+						<li class="footer__menu-item">
+							<a href="#">Інструкція по ос.кабiнету</a>
+						</li>
+						<li class="footer__menu-item">
+							<a href="#">Політика конфіденційності</a>
+						</li>
+					</ul>
+					<div class="footer__contact">
+						<div class="footer__contact-item">
+							<img src="maps.758b9ee3.svg" alt="">
+							<p>м. Київ, пров. Руслана Лужевського 14в, корпус 3</p>
+						</div>
+						<div class="footer__contact-item">
+							<img src="phone.8409bdde.svg" alt="">
+							<ul>
+								<li><a href="tel:+380504770505">(050)477-05-05</a></li>
+								<li><a href="tel:+380676221023">(067)622-10-23</a></li>
+								<li><a href="tel:+380445011561">(044)501-15-61</a></li>
+							</ul>
+						</div>
+						<div class="footer__contact-item">
+							<img src="time.c3c96b07.svg" alt="">
+							<p>Пн-Нд 08:00-18:00</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script type="module" src="index.5bef2cbe.js"></script>
 	</body>
 </html>
